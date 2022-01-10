@@ -28,7 +28,7 @@ def Game():
     Exit.destroy()
     result = TossMenu()
     
-    #Player won toss or not
+#Player won toss or not
     
     if result == 1:
         Match(BatBowl())
@@ -69,8 +69,12 @@ def Bat():
             score += choice.get()
         PlayerWidget.config(text = "Your Choice: "+str(choice.get()))
         OpponentWidget.config(text = "Opponent's Choice: "+str(rand))
-        
-    print("You are out!")
+
+    ResultWidget = Label(window, text = "You are out")
+    ResultWidget.pack()
+    ContinueButton = Button(window, text='Continue',command=lambda: choice.set(0))
+    ContinueButton.pack()
+    window.wait_variable(choice)
     c1.destroy()
     c2.destroy()
     c3.destroy()
@@ -79,6 +83,8 @@ def Bat():
     c6.destroy()
     PlayerWidget.destroy()
     OpponentWidget.destroy()
+    ResultWidget.destroy()
+    ContinueButton.destroy()
     return score
 
 
@@ -86,10 +92,15 @@ def Bat():
 #Bowling
 def Bowl():
     score = 0
+    rand = 0
     choice = IntVar()
     Heading("Bowling")
     ScoreWidget = Label(window, text = "Computer's Score: "+str(score))
+    PlayerWidget = Label(window, text = "Your Choice: "+str(choice.get()))
+    OpponentWidget = Label(window, text = "Opponent's Choice: "+str(rand))
     ScoreWidget.pack()
+    PlayerWidget.pack()
+    OpponentWidget.pack()
     c1 = Button(window, text='1',command=lambda: choice.set(1))
     c2 = Button(window, text='2',command=lambda: choice.set(2))
     c3 = Button(window, text='3',command=lambda: choice.set(3))
@@ -105,18 +116,28 @@ def Bowl():
     while True:
         ScoreWidget.config(text = "Computer's Score: "+str(score))
         window.wait_variable(choice)
-        val = six()
-        if choice.get() == val:
+        rand = six()
+        if choice.get() == rand:
             break
         else:
-            score += val
-    print("Computer is out!")
+            score += rand
+        PlayerWidget.config(text = "Your Choice: "+str(choice.get()))
+        OpponentWidget.config(text = "Opponent's Choice: "+str(rand))
+    ResultWidget = Label(window, text = "Computer is out")
+    ResultWidget.pack()
+    ContinueButton = Button(window, text='Continue',command=lambda: choice.set(0))
+    ContinueButton.pack()
+    window.wait_variable(choice)
     c1.destroy()
     c2.destroy()
     c3.destroy()
     c4.destroy()
     c5.destroy()
     c6.destroy()
+    PlayerWidget.destroy()
+    OpponentWidget.destroy()
+    ResultWidget.destroy()
+    ContinueButton.destroy()
     return score
 
 
@@ -133,11 +154,18 @@ def Match(myplay):
         print ("You are Bowling first")
         opponentscore = Bowl()
         playerscore = Bat()
-
-    if (playerscore>opponentscore):
-        print("You Win")
+    
+    Heading("Game Over")
+    
+    if playerscore == opponentscore:
+        ResultWidget = Label(window, text = "Draw!")
+        ResultWidget.pack()
+    elif playerscore>opponentscore:
+        ResultWidget = Label(window, text = "You Win!")
+        ResultWidget.pack()
     else:
-        print ("You Lose")
+        ResultWidget = Label(window, text = "Computer Wins!")
+        ResultWidget.pack()
 
         
 
