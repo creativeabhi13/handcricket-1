@@ -11,11 +11,21 @@ def two():
 #Creating window for the game:
 window = Tk()
 window.title("Handcricket")
-window.geometry("600x400")
+window.geometry("640x360")
+
+bgframe = Frame(window)
+bgframe.pack(side="top", expand=1)
+bgframe.place(x= 0, y= 0)
+bgimage = PhotoImage(file = 'wallpaper.png')
+bgwidget = Label(bgframe, image = bgimage)
+bgwidget.pack()
+
+buttonimage = PhotoImage(file = 'button.png')
+
 
 #Starting Heading
 Header = "MENU"
-HeaderWidget = Label(window, text = "Handcricket")
+HeaderWidget = Label(window, text = "Handcricket",height = 2, width = 30)
 HeaderWidget.pack()
 
 #Heading Change
@@ -41,18 +51,18 @@ def Bat():
     rand = 0
     choice = IntVar()
     Heading("Batting")
-    ScoreWidget = Label(window, text = "Your Score: "+str(score))
-    PlayerWidget = Label(window, text = "Your Choice: "+str(choice.get()))
-    OpponentWidget = Label(window, text = "Opponent's Choice: "+str(rand))
+    ScoreWidget = Label(window, text = "Your Score: "+str(score), height = 2, width = 20)
+    PlayerWidget = Label(window, text = "Your Choice: "+str(choice.get()), height = 2, width = 20)
+    OpponentWidget = Label(window, text = "Opponent's Choice: "+str(rand), height = 2, width = 20)
     ScoreWidget.pack()
     PlayerWidget.pack()
     OpponentWidget.pack()
-    c1 = Button(window, text='1',command=lambda: choice.set(1))
-    c2 = Button(window, text='2',command=lambda: choice.set(2))
-    c3 = Button(window, text='3',command=lambda: choice.set(3))
-    c4 = Button(window, text='4',command=lambda: choice.set(4))
-    c5 = Button(window, text='5',command=lambda: choice.set(5))
-    c6 = Button(window, text='6',command=lambda: choice.set(6))
+    c1 = Button(window, text='1',command=lambda: choice.set(1), height = 20, width = 200, image = buttonimage, compound=CENTER)
+    c2 = Button(window, text='2',command=lambda: choice.set(2), height = 20, width = 200, image = buttonimage, compound=CENTER)
+    c3 = Button(window, text='3',command=lambda: choice.set(3), height = 20, width = 200, image = buttonimage, compound=CENTER)
+    c4 = Button(window, text='4',command=lambda: choice.set(4), height = 20, width = 200, image = buttonimage, compound=CENTER)
+    c5 = Button(window, text='5',command=lambda: choice.set(5), height = 20, width = 200, image = buttonimage, compound=CENTER)
+    c6 = Button(window, text='6',command=lambda: choice.set(6), height = 20, width = 200, image = buttonimage, compound=CENTER)
     c1.pack()
     c2.pack()
     c3.pack()
@@ -60,19 +70,19 @@ def Bat():
     c5.pack()
     c6.pack()
     while True:
-        ScoreWidget.config(text = "Your Score: "+str(score))
+        ScoreWidget.config(text = "Your Score: "+str(score), height = 2, width = 20)
         window.wait_variable(choice)
         rand = six()
         if choice.get() == rand:
             break
         else:
             score += choice.get()
-        PlayerWidget.config(text = "Your Choice: "+str(choice.get()))
-        OpponentWidget.config(text = "Opponent's Choice: "+str(rand))
+        PlayerWidget.config(text = "Your Choice: "+str(choice.get()), height = 2, width = 20)
+        OpponentWidget.config(text = "Opponent's Choice: "+str(rand), height = 2, width = 20)
 
-    ResultWidget = Label(window, text = "You are out")
+    ResultWidget = Label(window, text = "You are out", height = 2, width = 20)
     ResultWidget.pack()
-    ContinueButton = Button(window, text='Continue',command=lambda: choice.set(0))
+    ContinueButton = Button(window, text='Continue',command=lambda: choice.set(0), height = 20, width = 200, image = buttonimage, compound=CENTER)
     ContinueButton.pack()
     window.wait_variable(choice)
     c1.destroy()
@@ -95,18 +105,18 @@ def Bowl():
     rand = 0
     choice = IntVar()
     Heading("Bowling")
-    ScoreWidget = Label(window, text = "Computer's Score: "+str(score))
-    PlayerWidget = Label(window, text = "Your Choice: "+str(choice.get()))
-    OpponentWidget = Label(window, text = "Opponent's Choice: "+str(rand))
+    ScoreWidget = Label(window, text = "Computer's Score: "+str(score), height = 2, width = 20)
+    PlayerWidget = Label(window, text = "Your Choice: "+str(choice.get()), height = 2, width = 20)
+    OpponentWidget = Label(window, text = "Opponent's Choice: "+str(rand), height = 2, width = 20)
     ScoreWidget.pack()
     PlayerWidget.pack()
     OpponentWidget.pack()
-    c1 = Button(window, text='1',command=lambda: choice.set(1))
-    c2 = Button(window, text='2',command=lambda: choice.set(2))
-    c3 = Button(window, text='3',command=lambda: choice.set(3))
-    c4 = Button(window, text='4',command=lambda: choice.set(4))
-    c5 = Button(window, text='5',command=lambda: choice.set(5))
-    c6 = Button(window, text='6',command=lambda: choice.set(6))
+    c1 = Button(window, text='1',command=lambda: choice.set(1), height = 20, width = 200, image = buttonimage, compound=CENTER)
+    c2 = Button(window, text='2',command=lambda: choice.set(2), height = 20, width = 200, image = buttonimage, compound=CENTER)
+    c3 = Button(window, text='3',command=lambda: choice.set(3), height = 20, width = 200, image = buttonimage, compound=CENTER)
+    c4 = Button(window, text='4',command=lambda: choice.set(4), height = 20, width = 200, image = buttonimage, compound=CENTER)
+    c5 = Button(window, text='5',command=lambda: choice.set(5), height = 20, width = 200, image = buttonimage, compound=CENTER)
+    c6 = Button(window, text='6',command=lambda: choice.set(6), height = 20, width = 200, image = buttonimage, compound=CENTER)
     c1.pack()
     c2.pack()
     c3.pack()
@@ -114,18 +124,18 @@ def Bowl():
     c5.pack()
     c6.pack()
     while True:
-        ScoreWidget.config(text = "Computer's Score: "+str(score))
+        ScoreWidget.config(text = "Computer's Score: "+str(score), height = 2, width = 20)
         window.wait_variable(choice)
         rand = six()
         if choice.get() == rand:
             break
         else:
             score += rand
-        PlayerWidget.config(text = "Your Choice: "+str(choice.get()))
-        OpponentWidget.config(text = "Opponent's Choice: "+str(rand))
-    ResultWidget = Label(window, text = "Computer is out")
+        PlayerWidget.config(text = "Your Choice: "+str(choice.get()), height = 2, width = 20)
+        OpponentWidget.config(text = "Opponent's Choice: "+str(rand), height = 2, width = 20)
+    ResultWidget = Label(window, text = "Computer is out", height = 2, width = 20)
     ResultWidget.pack()
-    ContinueButton = Button(window, text='Continue',command=lambda: choice.set(0))
+    ContinueButton = Button(window, text='Continue',command=lambda: choice.set(0), height = 20, width = 200, image = buttonimage, compound=CENTER)
     ContinueButton.pack()
     window.wait_variable(choice)
     c1.destroy()
@@ -158,13 +168,13 @@ def Match(myplay):
     Heading("Game Over")
     
     if playerscore == opponentscore:
-        ResultWidget = Label(window, text = "Draw!")
+        ResultWidget = Label(window, text = "Draw!", height = 2, width = 20)
         ResultWidget.pack()
     elif playerscore>opponentscore:
-        ResultWidget = Label(window, text = "You Win!")
+        ResultWidget = Label(window, text = "You Win!", height = 2, width = 20)
         ResultWidget.pack()
     else:
-        ResultWidget = Label(window, text = "Computer Wins!")
+        ResultWidget = Label(window, text = "Computer Wins!", height = 2, width = 20)
         ResultWidget.pack()
 
         
@@ -173,8 +183,8 @@ def Match(myplay):
 def TossMenu():
     choice = IntVar()
     Heading("Heads or Tails?")
-    Heads = Button(window, text='Heads',command=lambda: choice.set(0))
-    Tails = Button(window, text='Tails',command=lambda: choice.set(1))
+    Heads = Button(window, text='Heads',command=lambda: choice.set(0), height = 20, width = 200, image = buttonimage, compound=CENTER)
+    Tails = Button(window, text='Tails',command=lambda: choice.set(1), height = 20, width = 200, image = buttonimage, compound=CENTER)
     Heads.pack()
     Tails.pack()
     window.wait_variable(choice)
@@ -191,8 +201,8 @@ def TossMenu():
 def BatBowl():
     choice = IntVar()
     Heading("Do you choose to bat or bowl?")
-    Bat = Button(window, text='Bat',command=lambda: choice.set(0))
-    Bowl = Button(window, text='Bowl',command=lambda: choice.set(1))
+    Bat = Button(window, text='Bat',command=lambda: choice.set(0), height = 20, width = 200, image = buttonimage, compound=CENTER)
+    Bowl = Button(window, text='Bowl',command=lambda: choice.set(1), height = 20, width = 200, image = buttonimage, compound=CENTER)
     Bat.pack()
     Bowl.pack()
     window.wait_variable(choice)
@@ -202,8 +212,8 @@ def BatBowl():
 
 
 #Main Menu
-Play = Button(window, text='Play',command=lambda: Game())
+Play = Button(window, text='Play',command=lambda: Game(), height = 20, width = 200, image = buttonimage, compound=CENTER)
 Play.pack()
-Exit = Button(window, text='Exit',command=exit)
+Exit = Button(window, text='Exit',command=exit, height = 20, width = 200, image = buttonimage, compound=CENTER)
 Exit.pack()
 window.mainloop()
